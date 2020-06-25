@@ -1,6 +1,4 @@
-<?php
-    session_start();
-?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -31,11 +29,11 @@
 
     <main id="main-home">
     <?php
-                $session="<form action='/login.php' method='post' id='iniciosesion'><br>";
+                $session="<form action='/validacionuser.php' method='post' id='iniciosesion'><br>";
                 $session.="<label for='login' >ID:</label>";
                 $session.="<input name='login' type='cel'><br>";
-                $session.="<label for='Pass'>Pass:</label>";
-                $session.="<input type='password'name='Pass'><br>";
+                $session.="<label for='pass'>Pass:</label>";
+                $session.="<input type='password'name='pass'><br>";
                 $session.="</form>";
                 $session.="<div>
                             <button type='submit'  class='boton' form='iniciosesion'>login</button>         
@@ -50,57 +48,3 @@
     </footer>
 </body>
 </html>
-
-<?php
-    $conn = new mysqli("localhost", "root","","library");
-        
-        // Check connection
-        if ($conn->connect_error) {
-        echo 'Connection failed: ' . $conn->connect_error;
-        }
-        //students
-        $sql = "SELECT * from login";
-        $result = $conn->query($sql);
-        echo $_POST["login"];
-        echo $_POST["Pass"];
-        if(isset($_POST["login"]) && isset($_POST["Pass"])){
-            $idusuario=$_POST["login"];
-            $passusuario=$_POST["Pass"];
-            echo $idusuario;
-            echo $passusuario;
-            echo $id;
-            echo $pass;
-            if ($result->num_rows > 0) { 
-                while($row = $result->fetch_assoc()) 
-                        {  
-                        echo $row["id"];
-                        echo $row["pass"];
-                        echo $row["admin"];
-                        $id=$row["id"];
-                        $pass=$row["pass"];
-                        $admin=$row["admin"];
-
-                        if($id===$idusuario && $pass===$passusuario && $admin==1){
-                            echo '<script type="text/javascript">
-                            alert("BIENVENIDO ADMIN");
-                            window.location.href="admin/librosedit.php";
-                            </script>';
-                        }
-                        if($id===$idusuario && $pass===$passusuario && $admin==0){
-                            echo '<script type="text/javascript">
-                            alert("BIENVENIDO USUARIO");
-                            </script>';
-                        
-                        }
-                        } 
-                } 
-        }
-        
-        else {
-        echo '<script type="text/javascript">
-                alert("ID o Password incorrecto");
-                </script>';
-        }
-    $conn->close();
-
-?>

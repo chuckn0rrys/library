@@ -17,7 +17,7 @@
     <main id="main-home">
     <?php
 
-        $form = "<form action='/librosadd.php' method='post' id='form1'><br> ";
+        $form = "<form action='/admin/librosadd.php' method='post' id='form1'><br> ";
         $form .= "<label for='nombre'>Nombre:</label>";
         $form .= "<input type=text name='nombre'><br>";
         $form .= "<label for='cantidad'>cantidad:</label>";

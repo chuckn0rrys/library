@@ -39,6 +39,7 @@
 body{
 
     background-color: lightblue;
+    align-content: center;
 }
 
 #bienvenida{
@@ -57,6 +58,9 @@ td{
 
 #regreso{
     align-content: center;
+}
+form{
+    align-items:center;
 }
 
 

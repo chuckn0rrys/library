@@ -1,3 +1,7 @@
+<?php
+    session_start();
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -10,7 +14,6 @@
     <h1 id="bienvenida">BIENVENIDO A NUESTRA SECCION DE EDICION DE LIBROS</h1>
 </head>
 <body>
-
     <header>
         <h2 id="seleccion">
             <p>seleccione una opcion</p>
@@ -22,6 +25,9 @@
 
         <div>
     <?php
+        if($_SESSION["admin"]==1){
+
+        
         $servername = "localhost";
         $username = "root";
         $password = "pwdpwd";
@@ -70,7 +76,13 @@
     echo "0 results";
     }
     $conn->close();
-
+        }
+        else{
+        echo '<script type="text/javascript">
+        alert("No eres Administrador");
+        window.location.href="../login.php"
+        </script>';
+    }
     ?>
         </div>
         <?php
